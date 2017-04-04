@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>GLASSROOM</title>
+		<link href="css/style.css" rel="stylesheet" type="text/css">
+		<script type="application/javascript" src="js/main.js"></script>
+        <script type="application/javascript" src="js/jquery-3.1.0.min.js"></script>
+	</head>
+
+	<body>
+		<div class="slide">
+			<div class="body">
+				<p>Das Video übernehmen?</p>
+				<div style="text-align: center;">
+					<video id="videoPlayer" width="285px" height="160px" style="width: 285px; height: 160px; object-fit: contain;">
+						<source src="{{mediaPath}}" type="video/mp4" />
+					</video>
+				</div>
+			</div>
+            <div class="speech"></div>
+			<div class="navigation">
+				{{#each commands}}
+				<button id="btn-{{this.key}}" onclick="GRT.executeCommand('{{this.key}}');" {{#unless this.label}}class="close"{{/unless}}>{{this.label}}</button>
+				{{/each}}
+			</div>
+		</div>
+	</body>
+</html>

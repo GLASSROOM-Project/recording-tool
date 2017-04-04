@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>GLASSROOM</title>
+		<link href="css/style.css" rel="stylesheet" type="text/css">
+		<script type="application/javascript" src="js/main.js"></script>
+	</head>
+
+	<body>
+		<div class="slide">
+			<div class="body">
+				<p>Die Steuerung erfolgt über Spracheingabe oder die Auswahltasten.</p>
+				<p>Sagen Sie <span class="command">Details</span> für eine Einführung.</p>
+			</div>
+			<div class="navigation">
+				{{#each commands}}
+				<button onclick="GRT.executeCommand('{{this.key}}');" {{#unless this.label}}class="close"{{/unless}}>{{this.label}}</button>
+				{{/each}}
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,203 @@
+@font-face { font-family: "Droid Sans"; src: url("DroidSans.ttf") format("truetype");}
+@font-face { font-family: "Droid Sans"; src: url("DroidSans-Bold.ttf") format("truetype"); font-weight: bold; }
+
+body {
+	margin: 0px;
+}
+
+p {
+	margin-top: 0px;
+	margin-bottom: 12px;
+}
+
+div.slide {
+	background-color: #000000;
+	width: 432px;
+	height: 244px;
+	font-family: 'Droid Sans', sans-serif;
+	font-size: 25px;
+	color: #FFFFFF;
+	box-sizing: border-box;
+	background: url("../backgrounds/background.png") no-repeat;
+}
+
+div.slide.empty {
+    background: none;
+}
+
+div.slide.notification {
+	background: url("../backgrounds/background-notification.png") no-repeat;
+}
+
+div.slide.picture {
+	background: url("../backgrounds/background-picture.png") no-repeat;
+}
+
+div.slide.splash {
+	background: url("../backgrounds/splash.png") no-repeat;
+}
+
+div.slide > h1 {
+	overflow: hidden;
+	padding: 40px 13px 0px;
+	text-align: center;
+	font-size: 50px;
+	font-weight: normal;
+}
+div.slide > h2 {
+	text-align: center;
+	font-size: 50px;
+	font-weight: normal;
+}
+
+div.slide > div.item {
+	position: absolute;
+	top: 67px;
+	left: 0px;
+	text-align: center;
+	width: 100%;
+	height: 100px;
+	padding: 3px 0px;
+	box-sizing: border-box;
+	background: url("../icons/standard-item.png") 13px 0px no-repeat;
+}
+
+div.slide > div.item.first:not(.last) {
+	background: url("../icons/first-item.png") 13px 0px no-repeat;
+}
+
+div.slide > div.item.last:not(.first)  {
+	background: url("../icons/last-item.png") 13px 0px no-repeat;
+}
+
+div.slide > div.item.first.last {
+	background: url("../icons/single-item.png") 13px 0px no-repeat;
+}
+
+
+div.slide > div.item > p {
+	margin: 0px;
+}
+
+div.slide.selection {
+	background: url("../backgrounds/background.png") no-repeat;
+}
+
+div.slide.video {
+	background: url("../backgrounds/background-video.png") no-repeat;
+}
+
+div.slide.voice {
+	background: url("../backgrounds/background-voice.png") no-repeat;
+}
+
+div.slide > div.body {
+	height: 165px;
+	overflow: hidden;
+	margin-bottom: 24px;
+	padding: 13px;
+}
+
+div.slide > div.body.centered {
+    text-align: center;
+}
+
+div.slide > div.navigation {
+	position: absolute;
+	bottom: 7px;
+	left: 9px;
+}
+
+div.slide > div.navigation > button {
+	border: none;
+	height: 36px;
+	margin: 0px;
+	background-color: #98BD2D;
+	color: #464646;
+	font-family: 'Droid Sans', sans-serif;
+	font-size: 18px;
+	font-weight: bold;
+	padding: 6px 8px 4px;
+	border-radius: 6px;
+}
+
+div.slide > div.navigation > button.executed {
+	background-color: #ED7F00;
+}
+
+div.slide > div.navigation > button:not(.close):hover {
+	background-color: #ED7F00;
+}
+
+div.slide > div.navigation > button.close {
+	width: 36px;
+	background: url("../icons/close.png") no-repeat;
+}
+
+div.slide > div.navigation > button.close:hover {
+	background: url("../icons/close-selected.png") no-repeat;
+}
+
+span.command {
+	font-weight: bold;
+	color: #98BD2D;
+}
+
+span.button {
+	color: #ED7F00;
+}
+
+span.button:before {
+	content: "[";
+}
+
+span.button:after {
+	content: "]";
+}
+
+div.recording {
+	position: absolute;
+	bottom: 7px;
+	right: 9px;
+	width: 36px;
+	height: 36px;
+}
+
+div.recording.video {
+	background: url("../icons/video.png") no-repeat;
+}
+
+div.recording.voice {
+	background: url("../icons/voice.png") no-repeat;
+}
+
+div.recording.picture {
+	background: url("../icons/picture.png") no-repeat;
+}
+
+div.speech {
+	position: absolute;
+	bottom: 7px;
+	right: 9px;
+	width: 36px;
+	height: 36px;
+	background: url("../icons/speech-inactive.png") no-repeat;
+}
+
+div.speech.ready {
+    background: url("../icons/speech-ready.png") no-repeat;
+}
+
+div.speech.active {
+    background: url("../icons/speech-active.png") no-repeat;
+}
+
+div.speech.error {
+    background: url("../icons/speech-error.png") no-repeat;
+}
+
+div.countdown {
+    position: absolute;
+    top: 7px;
+    right: 9px;
+}

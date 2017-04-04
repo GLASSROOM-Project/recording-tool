@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workflow beginWith="startup" xmlns="glassroom:grt:workflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="glassroom:grt:workflow workflow.xsd ">
+	<slide id="startup" type="splash">
+		<properties>
+			<template>startup</template>
+			<background>backgrounds/background.png</background>
+			<forward delay="3" target="tutorial-option" />
+		</properties>
+		<commands />
+	</slide>
+
+	<slide id="tutorial-option" type="default">
+		<properties>
+			<template>slide_default</template>
+			<body><![CDATA[<p>Die Steuerung erfolgt über Spracheingabe oder die Auswahltasten.</p><p>Sagen Sie <span class="command">Details</span> für eine Einführung.</p>]]></body>
+			<background>backgrounds/background.png</background>
+		</properties>
+		<commands>
+			<command key="weiter" target="home" label="Weiter" voiceCommands="weiter" />
+			<command key="details" target="tutorial-navigation" label="Details" voiceCommands="details" />
+		</commands>
+	</slide>
+	<slide id="tutorial-navigation" type="default">
+		<properties>
+			<template>slide_default</template>
+			<body><![CDATA[<p>Unten sind die Sprachbefehle aufgelistet, die aktuell zur Verfügung stehen.</p><p>Sagen Sie <span class="command">Weiter</span> um fortzusetzen.</p>]]></body>
+			<background>backgrounds/background.png</background>
+		</properties>
+		<commands>
+			<command key="weiter" target="tutorial-cancel" label="Weiter" voiceCommands="weiter" />
+			<command key="cancel" target="tutorial-option" voiceCommands="abbrechen" />
+		</commands>
+	</slide>
+	<slide id="tutorial-cancel" type="default">
+		<properties>
+			<template>slide_default</template>
+			<body><![CDATA[<p>Befindet sich ein <img style="width: 24px;" src="icons/close.png"> unter den Optionen, so können sie den aktuellen Vorgang mit dem Sprachbefehl "Abbrechen" sofort beenden.</p>]]></body>
+			<background>backgrounds/background.png</background>
+		</properties>
+		<commands>
+			<command key="weiter" target="tutorial-buttons1" label="Weiter" voiceCommands="weiter" />
+			<command key="cancel" target="tutorial-option" voiceCommands="abbrechen" />
+		</commands>
+	</slide>
+	<slide id="tutorial-buttons1" type="default">
+		<properties>
+			<template>slide_default</template>
+			<body><![CDATA[<p>Sie können auch die Tasten der Brille verwenden um mit <span class="button">Vor</span> und <span class="button">Zurück</span> eine Aktion auszuwählen und diese zu <span class="button">Bestätigen.</span></p>]]></body>
+			<background>backgrounds/background.png</background>
+		</properties>
+		<commands>
+			<command key="weiter" target="tutorial-buttons2" label="Weiter" voiceCommands="weiter" />
+			<command key="cancel" target="tutorial-option" voiceCommands="abbrechen" />
+		</commands>
+	</slide>
+	<slide id="tutorial-buttons2" type="default">
+		<properties>
+			<template>slide_default</template>
+			<body><![CDATA[<p style="text-align: center;"><img src="images/vuzix-buttons.png"></p>]]></body>
+			<background>backgrounds/background.png</background>
+		</properties>
+		<commands>
+			<command key="weiter" target="tutorial-recaudio" label="Weiter" voiceCommands="weiter" />
+			<command key="cancel" target="tutorial-option" voiceCommands="abbrechen" />
+		</commands>
+	</slide>
+	<slide id="tutorial-recaudio" type="default">
+		<properties>
+			<template>tutorial-recaudio</template>
+			<background>backgrounds/background-voice.png</background>
+			<activity-notifier>icons/voice.png</activity-notifier>
+		</properties>
+		<commands>
+			<command key="weiter" target="tutorial-takepicture" label="Weiter" voiceCommands="weiter" />
+			<command key="cancel" target="tutorial-option" voiceCommands="abbrechen" />
+		</commands>
+	</slide>
+	<slide id="tutorial-takepicture" type="default">
+		<properties>
+			<template>tutorial-takepicture</template>
+			<background>backgrounds/background-picture.png</background>
+			<activity-notifier>icons/picture.png</activity-notifier>
+		</properties>
+		<commands>
+			<command key="weiter" target="tutorial-recvideo" label="Weiter" voiceCommands="weiter" />
+			<command key="cancel" target="tutorial-option" voiceCommands="abbrechen" />
+		</commands>
+	</slide>
+	<slide id="tutorial-recvideo" type="default">
+		<properties>
+			<template>tutorial-recvideo</template>
+			<background>backgrounds/background-video.png</background>
+			<activity-notifier>icons/video.png</activity-notifier>
+		</properties>
+		<commands>
+			<command key="weiter" target="tutorial-complete" label="Weiter" voiceCommands="weiter" />
+			<command key="cancel" target="tutorial-option" voiceCommands="abbrechen" />
+		</commands>
+	</slide>
+	<slide id="tutorial-complete" type="info">
+		<properties>
+			<template>slide_notification</template>
+			<body><![CDATA[<p>Die Einführung ist damit beendet. Viel Erfolg bei der Anwendung!</p>]]></body>
+			<background>backgrounds/background-notification.png</background>
+			<forward delay="3" target="home" />
+		</properties>
+		<commands />
+	</slide>
+
+	<slide id="home" type="default">
+		<properties>
+			<template>slide_default</template>
+			<body><![CDATA[<p>Was möchten Sie tun:</p><p>1) <span class="command">Neu</span>e Anleitung erstellen</p><p>2) Bestehende Anleitung <span class="command">öffnen</span></p><p>3) Programm <span class="command">beenden</span></p>]]></body>
+			<background>backgrounds/background.png</background>
+		</properties>
+		<commands>
+			<command key="neu" target="create-record-name" action="create-guide" label="Neu" voiceCommands="neu;neue;1" />
+			<command key="oeffnen" target="edit-select-guide" label="Öffnen" voiceCommands="öffnen;2" />
+			<command key="beenden" action="exit" label="Beenden" voiceCommands="beenden;3" />
+		</commands>
+	</slide>
+
+	<slide id="create-record-name" type="recaudio">
+		<properties>
+			<template>slide_record-voice</template>
+			<body><![CDATA[<p>Nennen Sie einen Namen für die Anleitung.</p>]]></body>
+			<background>backgrounds/background-voice.png</background>
+			<next>create-confirm-name</next>
+			<activity-notifier>icons/voice.png</activity-notifier>
+		</properties>
+		<commands />
+	</slide>
+	<slide id="create-confirm-name" type="default">
+		<properties>
+			<template>slide_confirm-text</template>
+			<background>backgrounds/background-voice.png</background>
+		</properties>
+		<commands>
+			<command key="ja" target="create-record-support" action="confirm-text-name" label="Ja" voiceCommands="ja" />
+			<command key="nein" target="create-record-name" label="Nein" voiceCommands="nein" />
+			<command key="cancel" target="create-cancel" voiceCommands="abbrechen" />
+		</commands>
+	</slide>
+	<slide id="create-record-support" type="recaudio">
+		<properties>
+			<template>slide_record-voice</template>
+			<body><![CDATA[<p>Beschreiben sie das Ziel der Anleitung.</p>]]></body>
+			<background>backgrounds/background-voice.png</background>
+			<next>create-confirm-support</next>
+			<activity-notifier>icons/voice.png</activity-notifier>
+		</properties>
+		<commands />
+	</slide>
+	<slide id="create-confirm-support" type="default">
+		<properties>
+			<template>slide_confirm-text</template>
+			<background>backgrounds/background-voice.png</background>
+		</properties>
+		<commands>
+			<command key="ja" target="create-option-prep" action="confirm-text-support" label="Ja" voiceCommands="ja" />
+			<command key="nein" target="create-record-support" label="Nein" voiceCommands="nein" />
+			<command key="cancel" target="create-cancel" voiceCommands="abbrechen" />
+		</commands>
+	</slide>
+	<slide id="create-option-prep" type="default">
+		<properties>
+			<template>slide_default</template>
+			<body><![CDATA[<p>Sind vor der Durchführung Vorbereitungen zu treffen, z.B. Werkzeuge bereit zu legen oder Teile auszubauen?</p>]]></body>
+			<background>backgrounds/background.png</background>
+		</properties>
+		<commands>
+			<command key="ja" target="create-prep-intro" label="Ja" voiceCommands="ja" />
+			<command key="nein" target="step-option-newstep" label="Nein" voiceCommands="nein" />
+			<command key="cancel" target="home" voiceCommands="abbrechen" />
+		</commands>
+	</slide>
+	<slide id="create-prep-intro" type="prepvideo">
+		<properties>
+			<template>slide_prepare-video</template>
+		</properties>
+		<commands>
+			<command key="weiter" target="create-recprep" label="Weiter" voiceCommands="weiter;los" />
+			<command key="cancel" target="create-option-prep" voiceCommands="abbrechen" />
+		</commands>
+	</slide>
+	<slide id="create-recprep" type="recvideo">
+		<properties>
+			<template>slide_record-video</template>
+			<next>create-confirm-prep</next>
+			<activity-notifier>icons/video.png</activity-notifier>
+		</properties>
+		<commands />
+	</slide>
+	<slide id="create-confirm-prep" type="default">
+		<properties>
+			<template>slide_confirm-video</template>
+			<background>backgrounds/background-video.png</background>
+		</properties>
+		<commands>
+			<command key="ja" target="step-option-newstep" action="accept-video" label="Ja" voiceCommands="ja" />
+			<command key="nein" target="create-prep-intro" action="discard-video" label="Nein" voiceCommands="nein" />
+			<command key="abspielen" action="play" label="Abspielen" voiceCommands="abspielen" />
+			<command key="cancel" target="create-option-prep" action="discard-video" voiceCommands="abbrechen" />
+		</commands>
+	</slide>
+	<slide id="create-cancel" type="default">
+		<properties>
+			<template>slide_default</template>
+			<body><![CDATA[<p>Wollen Sie wirklich abbrechen?</p><p>Die Anleitung wird damit verworfen.</p>]]></body>
+			<background>backgrounds/background.png</background>
+		</properties>
+		<commands>
+			<command key="ja" target="home" action="cancel-guide" label="Ja" voiceCommands="ja" />
+			<command key="nein" action="back" label="Nein" voiceCommands="nein" />
+		</commands>
+	</slide>
+
+	<slide id="step-option-newstep" type="default">
+		<properties>
+			<template>step-option-newstep</template>
+			<background>backgrounds/background.png</background>
+		</properties>
+		<commands>
+			<command key="ja" target="step-option-include" label="Ja" voiceCommands="ja" />
+			<command key="nein" target="step-info-exit" action="complete-guide" label="Nein" voiceCommands="nein" />
+		</commands>
+	</slide>
+	<slide id="step-info-exit" type="info">
+		<properties>
+			<template>slide_notification</template>
+			<body><![CDATA[<p>Die Anleitung wurde gespeichert.</p>]]></body>
+			<background>backgrounds/background-notification.png</background>
+			<forward delay="3" target="home" />
+		</properties>
+		<commands />
+	</slide>
+	<slide id="step-option-include" type="default">
+		<properties>
+			<template>slide_default</template>
+			<body><![CDATA[<p>Möchten Sie an dieser Stelle eine existierende Anleitung einbinden?</p>]]></body>
+			<background>backgrounds/background.png</background>
+		</properties>
+		<commands>
+			<command key="ja" target="step-select-guide" label="Ja" voiceCommands="ja" />
+			<command key="nein" target="step-record-description" action="create-step" label="Nein" voiceCommands="nein" />
+		</commands>
+	</slide>
+	<slide id="step-select-guide" type="list">
+		<properties>
+			<template>select-guide</template>
+			<background>backgrounds/background-selection.png</background>
+		</properties>
+		<commands>
+			<command key="vorherige" action="previous" label="Vorherige" voiceCommands="vorherige;vorheriges;zurück" />
+			<command key="naechste" action="next" label="Nächste" voiceCommands="nächste;nächstes;weiter" />
+			<command key="einbinden" action="include-guide" target="step-include-info" label="Einbinden" voiceCommands="einbinden" />
+			<command key="cancel" target="step-option-include" voiceCommands="abbrechen" />
+		</commands>
+	</slide>
+	<slide id="step-include-info" type="info">
+		<properties>
+			<template>slide_notification</template>
+			<body><![CDATA[<p>Die Anleitung wurde als neuer Schritt hinzugefügt.</p>]]></body>
+			<background>backgrounds/background-notification.png</background>
+			<forward delay="3" target="step-option-newstep" />
+		</properties>
+		<commands />
+	</slide>
+	<slide id="step-record-description" type="recaudio">
+		<properties>
+			<template>slide_record-voice</template>
+			<body><![CDATA[<p>Beschreiben Sie den Schritt in wenigen Worten.</p>]]></body>
+			<background>backgrounds/background-voice.png</background>
+			<next>step-confirm-description</next>
+			<activity-notifier>icons/voice.png</activity-notifier>
+		</properties>
+		<commands />
+	</slide>
+	<slide id="step-confirm-description" type="default">
+		<properties>
+			<template>slide_confirm-text</template>
+			<background>backgrounds/background-voice.png</background>
+		</properties>
+		<commands>
+			<command key="ja" target="step-option-media" action="confirm-text-description" label="Ja" voiceCommands="ja" />
+			<command key="nein" target="step-record-description" label="Nein" voiceCommands="nein" />
+			<command key="cancel" target="step-cancel" voiceCommands="abbrechen" />
+		</commands>
+	</slide>
+	<slide id="step-option-media" type="default">
+		<properties>
+			<template>slide_default</template>
+			<body><![CDATA[<p>Möchten Sie ein Foto oder Video aufnehmen?</p>]]></body>
+			<background>backgrounds/background.png</background>
+		</properties>
+		<commands>
+			<command key="foto" target="step-foto-prepare" label="Foto" voiceCommands="foto;bild" />
+			<command key="video" target="step-video-prepare" label="Video" voiceCommands="video;film" />
+			<command key="nein" target="step-option-warning" label="Nein" voiceCommands="nein" />
+			<command key="cancel" target="step-cancel" voiceCommands="abbrechen"/>
+		</commands>
+	</slide>
+	<slide id="step-foto-prepare" type="default">
+		<properties>
+			<template>slide_prepare-foto</template>
+		</properties>
+		<commands>
+			<command key="weiter" target="step-foto-record" label="Aufnehmen" voiceCommands="aufnehmen;foto" />
+			<command key="cancel" target="step-option-media" voiceCommands="abbrechen" />
+		</commands>
+	</slide>
+	<slide id="step-foto-record" type="recpicture">
+		<properties>
+			<template>slide_record-picture</template>
+			<activity-notifier>icons/picture.png</activity-notifier>
+		</properties>
+		<commands>
+			<command key="bild" action="snapshot" target="step-foto-confirm" label="Bild" voiceCommands="bild;foto"/>
+		</commands>
+	</slide>
+	<slide id="step-foto-confirm" type="default">
+		<properties>
+			<template>slide_confirm-picture</template>
+			<background>backgrounds/background-picture.png</background>
+		</properties>
+		<commands>
+			<command key="ja" target="step-option-warning" action="accept-picture" label="Ja" voiceCommands="ja" />
+			<command key="nein" target="step-foto-record" action="discard-picture" label="Nein" voiceCommands="nein" />
+			<command key="cancel" target="step-option-media" action="discard-picture" voiceCommands="abbrechen"/>
+		</commands>
+	</slide>
+	<slide id="step-video-prepare" type="prepvideo">
+		<properties>
+			<template>slide_prepare-video</template>
+		</properties>
+		<commands>
+			<command key="weiter" target="step-video-record" label="Weiter" voiceCommands="weiter;los" />
+			<command key="cancel" target="step-option-media" voiceCommands="abbrechen" />
+		</commands>
+	</slide>
+	<slide id="step-video-record" type="recvideo">
+		<properties>
+			<template>slide_record-video</template>
+			<next>step-video-confirm</next>
+			<activity-notifier>icons/video.png</activity-notifier>
+		</properties>
+		<commands />
+	</slide>
+	<slide id="step-video-confirm" type="default">
+		<properties>
+			<template>slide_confirm-video</template>
+			<background>backgrounds/background-video.png</background>
+		</properties>
+		<commands>
+			<command key="ja" target="step-option-warning" action="accept-video" label="Ja" voiceCommands="ja" />
+			<command key="nein" target="step-video-prepare" action="discard-video" label="Nein" voiceCommands="nein" />
+			<command key="abspielen" action="play" label="Abspielen" voiceCommands="abspielen" />
+			<command key="cancel" target="step-option-media" action="discard-video" voiceCommands="abbrechen"/>
+		</commands>
+	</slide>
+	<slide id="step-option-warning" type="default">
+		<properties>
+			<template>step-option-warning</template>
+			<background>backgrounds/background.png</background>
+		</properties>
+		<commands>
+			<command key="ja" target="step-record-warning" label="Ja" voiceCommands="ja" />
+			<command key="nein" target="step-option-note" label="Nein" voiceCommands="nein" />
+			<command key="cancel" target="step-cancel" voiceCommands="abbrechen"/>
+		</commands>
+	</slide>
+	<slide id="step-record-warning" type="recaudio">
+		<properties>
+			<template>slide_record-voice</template>
+			<body><![CDATA[<p>Sie können die Warnung jetzt aufzeichnen.</p>]]></body>
+			<background>backgrounds/background-voice.png</background>
+			<next>step-confirm-warning</next>
+			<activity-notifier>icons/voice.png</activity-notifier>
+		</properties>
+		<commands />
+	</slide>
+	<slide id="step-confirm-warning" type="default">
+		<properties>
+			<template>slide_confirm-text</template>
+			<background>backgrounds/background-voice.png</background>
+		</properties>
+		<commands>
+			<command key="ja" target="step-option-warning" action="confirm-text-warning" label="Ja" voiceCommands="ja" />
+			<command key="nein" target="step-record-warning" label="Nein" voiceCommands="nein" />
+			<command key="cancel" target="step-option-warning" voiceCommands="abbrechen" />
+		</commands>
+	</slide>
+	<slide id="step-option-note" type="default">
+		<properties>
+			<template>step-option-note</template>
+			<background>backgrounds/background.png</background>
+		</properties>
+		<commands>
+			<command key="ja" target="step-record-note" label="Ja" voiceCommands="ja" />
+			<command key="nein" target="step-request-routine" label="Nein" voiceCommands="nein" />
+			<command key="cancel" target="step-cancel" voiceCommands="abbrechen"/>
+		</commands>
+	</slide>
+	<slide id="step-record-note" type="recaudio">
+		<properties>
+			<template>slide_record-voice</template>
+			<body><![CDATA[<p>Sie können den Hinweis jetzt aufzeichnen.</p>]]></body>
+			<background>backgrounds/background-voice.png</background>
+			<next>step-confirm-note</next>
+			<activity-notifier>icons/voice.png</activity-notifier>
+		</properties>
+		<commands />
+	</slide>
+	<slide id="step-confirm-note" type="default">
+		<properties>
+			<template>slide_confirm-text</template>
+			<background>backgrounds/background-voice.png</background>
+		</properties>
+		<commands>
+			<command key="ja" target="step-option-note" action="confirm-text-note" label="Ja" voiceCommands="ja" />
+			<command key="nein" target="step-record-note" label="Nein" voiceCommands="nein" />
+			<command key="cancel" target="step-option-note" voiceCommands="abbrechen" />
+		</commands>
+	</slide>
+	<slide id="step-request-routine" type="default">
+		<properties>
+			<template>slide_default</template>
+			<body><![CDATA[<p>Handelt es sich bei dem Schritt um eine Routinetätigkeit?</p>]]></body>
+			<background>backgrounds/background.png</background>
+		</properties>
+		<commands>
+			<command key="ja" target="step-complete" action="set-routine-and-complete" label="Ja" voiceCommands="ja" />
+			<command key="nein" target="step-complete" action="set-no-routine-and-complete" label="Nein" voiceCommands="nein" />
+		</commands>
+	</slide>
+	<slide id="step-complete" type="info">
+		<properties>
+			<template>slide_notification</template>
+			<body><![CDATA[<p>Der Schritt wurde erfolgreich hinzugefügt.</p>]]></body>
+			<background>backgrounds/background-notification.png</background>
+			<forward delay="3" target="step-option-newstep" />
+		</properties>
+		<commands />
+	</slide>
+	<slide id="step-cancel" type="default">
+		<properties>
+			<template>slide_default</template>
+			<body><![CDATA[<p>Wollen Sie wirklich abbrechen?</p><p>Der aktuelle Schritt wird damit verworfen.</p>]]></body>
+			<background>backgrounds/background.png</background>
+		</properties>
+		<commands>
+			<command key="ja" target="step-option-newstep" label="Ja" voiceCommands="ja" />
+			<command key="nein" action="back" label="Nein" voiceCommands="nein" />
+		</commands>
+	</slide>
+	
+	<slide id="edit-select-guide" type="list">
+		<properties>
+			<template>select-guide</template>
+			<background>backgrounds/background-selection.png</background>
+		</properties>
+		<commands>
+			<command key="vorherige" action="previous" label="Vorherige" voiceCommands="vorherige;vorheriges;zurück" />
+			<command key="naechste" action="next" label="Nächste" voiceCommands="nächste;nächstes;weiter" />
+			<command key="auswaehlen" action="select-guide" target="edit-choose-action" label="Auswählen" voiceCommands="auswählen" />
+			<command key="cancel" target="home" voiceCommands="abbrechen" />
+		</commands>
+	</slide>
+	<slide id="edit-choose-action" type="default">
+		<properties>
+			<template>edit-choose-action</template>
+			<background>backgrounds/background.png</background>
+		</properties>
+		<commands>
+			<command key="fortsetzen" target="edit-info-continue" label="Fortsetzen" voiceCommands="fortsetzen;öffnen" />
+			<command key="loeschen" target="edit-confirm-delete" label="Löschen" voiceCommands="löschen" />
+			<command key="cancel" target="home" voiceCommands="abbrechen" />
+		</commands>
+	</slide>
+	<slide id="edit-info-continue" type="info">
+		<properties>
+			<template>slide_notification</template>
+			<body><![CDATA[<p>Es wird ein neuer Schritt hinzugefügt.</p>]]></body>
+			<background>backgrounds/background-notification.png</background>
+			<forward delay="3" target="step-option-include" />
+		</properties>
+		<commands />
+	</slide>
+	<slide id="edit-confirm-delete" type="default">
+		<properties>
+			<template>edit-confirm-delete</template>
+			<background>backgrounds/background.png</background>
+		</properties>
+		<commands>
+			<command key="ja" target="edit-info-delete" action="delete" label="Ja" voiceCommands="ja" />
+			<command key="nein" target="edit-choose-action" label="Nein" voiceCommands="nein" />
+		</commands>
+	</slide>
+	<slide id="edit-info-delete" type="info">
+		<properties>
+			<template>slide_notification</template>
+			<body><![CDATA[<p>Die Anleitung wurde gelöscht.</p>]]></body>
+			<background>backgrounds/background-notification.png</background>
+			<forward delay="3" target="home" />
+		</properties>
+		<commands />
+	</slide>
+	<slide id="exit" type="splash">
+		<properties>
+			<template>exit</template>
+			<background>backgrounds/background.png</background>
+			<forward delay="3" target="" />
+		</properties>
+		<commands />
+	</slide>
+</workflow>

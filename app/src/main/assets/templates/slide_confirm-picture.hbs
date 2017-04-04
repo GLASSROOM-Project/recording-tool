@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>GLASSROOM</title>
+		<link href="css/style.css" rel="stylesheet" type="text/css">
+		<script type="application/javascript" src="js/main.js"></script>
+        <script type="application/javascript" src="js/jquery-3.1.0.min.js"></script>
+	</head>
+
+	<body>
+		<div class="slide picture">
+			<div class="body">
+				<p>Das Bild übernehmen?</p>
+				<div style="text-align: center;">
+					<img src="{{mediaPath}}" style="height:160px">
+				</div>
+			</div>
+            <div class="speech"></div>
+			<div class="navigation">
+				{{#each commands}}
+				<button id="btn-{{this.key}}" onclick="GRT.executeCommand('{{this.key}}');" {{#unless this.label}}class="close"{{/unless}}>{{this.label}}</button>
+				{{/each}}
+			</div>
+		</div>
+	</body>
+</html>

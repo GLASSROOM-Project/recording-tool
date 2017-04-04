@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>GLASSROOM</title>
+		<link href="css/style.css" rel="stylesheet" type="text/css">
+		<script type="application/javascript" src="js/main.js"></script>
+	</head>
+
+	<body>
+		<div class="slide picture">
+			<div class="body"> </div>
+			<div class="recording picture"> </div>
+			<div class="navigation">
+				{{#each commands}}
+				<button onclick="GRT.executeCommand('{{this.key}}');" {{#unless this.label}}class="close"{{/unless}}>{{this.label}}</button>
+				{{/each}}
+			</div>
+		</div>
+	</body>
+</html>

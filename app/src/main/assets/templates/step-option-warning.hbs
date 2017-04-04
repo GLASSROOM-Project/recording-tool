@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>GLASSROOM</title>
+		<link href="css/style.css" rel="stylesheet" type="text/css">
+		<script type="application/javascript" src="js/main.js"></script>
+        <script type="application/javascript" src="js/jquery-3.1.0.min.js"></script>
+	</head>
+
+	<body>
+		<div class="slide">
+			<div class="body">
+                <p>Möchten Sie eine {{#if content.hasWarnings}}weitere {{/if}}explizite Warnung anfügen?</p>
+                {{#if content.hasWarnings}}<p>Derzeit sind derzeit {{content.numWarnings}} Warnung(en) hinterlegt.</p>{{/if}}
+			</div>
+            <div class="speech"></div>
+			<div class="navigation">
+				{{#each commands}}
+				<button id="btn-{{this.key}}" onclick="GRT.executeCommand('{{this.key}}');" {{#unless this.label}}class="close"{{/unless}}>{{this.label}}</button>
+				{{/each}}
+			</div>
+		</div>
+	</body>
+</html>

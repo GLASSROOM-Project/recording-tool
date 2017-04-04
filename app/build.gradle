@@ -1,0 +1,55 @@
+apply plugin: 'com.android.application'
+
+repositories {
+    mavenCentral()
+    maven {
+        credentials {
+            username "$mavenUser"
+            password "$mavenPassword"
+        }
+        url 'http://repository.research.im-c.de/artifactory/aplus-local'
+    }
+}
+
+android {
+    compileSdkVersion 'Vuzix Corporation:Vuzix M100 SDK Add-on:15'
+    buildToolsVersion '21.1.2'
+    defaultConfig {
+        applicationId "de.glassroom.grt"
+        minSdkVersion 15
+        targetSdkVersion 15
+        versionCode 1
+        versionName "1.3.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    productFlavors {
+    }
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_7
+        sourceCompatibility JavaVersion.VERSION_1_7
+    }
+    packagingOptions {
+        exclude 'META-INF/NOTICE' // will not include NOTICE file
+        exclude 'META-INF/LICENSE' // will not include LICENSE file
+        // as noted by @Vishnuvathsan you may also need to include
+        // variations on the file name. It depends on your dependencies.
+        // Some other common variations on notice and license file names
+        exclude 'META-INF/notice'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/license'
+        exclude 'META-INF/license.txt'
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'de.glassroom.gpe:gpe:1.5.0'
+    compile 'de.glassroom.grt:grt-wf:1.0.0'
+    compile 'com.github.jknack:handlebars:4.0.6'
+}

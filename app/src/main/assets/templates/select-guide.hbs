@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+        <meta charset="utf-8">
+        <title>GLASSROOM</title>
+        <link href="css/style.css" rel="stylesheet" type="text/css">
+        <script type="application/javascript" src="js/main.js"></script>
+        <script type="application/javascript" src="js/jquery-3.1.0.min.js"></script>
+	</head>
+
+	<body>
+		<div class="slide {{#if guide}}selection{{/if}}">
+            {{#if guide}}
+            <div class="body">
+                <p>Wählen Sie eine Anleitung:</p>
+            </div>
+            <div class="item {{#if isFirst}}first{{/if}} {{#if isLast}}last{{/if}}">
+                <p>{{guide.title}}</p>
+                <p>{{guide.steps}} Schritte</p>
+                <p>{{#if guide.lastUpdate}}Stand: {{guide.lastUpdate}}{{/if}}</p>
+            </div>
+            <div class="speech"></div>
+            <div class="navigation">
+                {{#each commands}}
+                    <button id="btn-{{this.key}}" onclick="GRT.executeCommand('{{this.key}}');" {{#unless this.label}}class="close"{{/unless}}>{{this.label}}</button>
+                {{/each}}
+            </div>
+            {{else}}
+            <div class="body">
+                <p>Es existieren noch keine Anleitungen.</p>
+            </div>
+            {{/if}}
+
+		</div>
+	</body>
+</html>

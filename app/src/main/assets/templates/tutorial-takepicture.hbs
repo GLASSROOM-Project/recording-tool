@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>GLASSROOM</title>
+		<link href="css/style.css" rel="stylesheet" type="text/css">
+		<script type="application/javascript" src="js/main.js"></script>
+        <script type="application/javascript" src="js/jquery-3.1.0.min.js"></script>
+	</head>
+
+	<body>
+		<div class="slide">
+			<div class="body">
+				<!--p>Wird das <img src="icons/picture.png" style="width:24px">-Symbol angezeigt können Sie mit dem Sprachbefehl <span class="command">Bild</span> oder der <span class=button>Bestätigen</span>-Taste ein Bild aufnehmen.</p-->
+                <p>Wenn Sie ein Foto machen wird das <img src="icons/picture.png" style="width:24px">-Symbol angezeigt. Die Kamera löst automatisch nach 5 Sekunden aus.</p><p></p>
+			</div>
+            <div class="speech"></div>
+			<div class="navigation">
+				{{#each commands}}
+				<button id="btn-{{this.key}}" onclick="GRT.executeCommand('{{this.key}}');" {{#unless this.label}}class="close"{{/unless}}>{{this.label}}</button>
+				{{/each}}
+			</div>
+		</div>
+	</body>
+</html>
